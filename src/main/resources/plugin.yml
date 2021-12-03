@@ -1,0 +1,7 @@
+name: Redstonehelper2
+version: '${project.version}'
+main: hashmonopolist.redstonehelper2.Redstonehelper2
+api-version: 1.17
+author: 1Gigabyte
+description: Utilities for the redstone engineer.
+depend: [CommandAPI]

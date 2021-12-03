@@ -1,0 +1,35 @@
+#RedstoneHelper2 V1.0.0
+commands:
+  redstonehelper:
+    permission: redstonehelper2.redstonehelper2
+    reload:
+      permission: redstonehelper2.reload
+  bin2dec:
+    enabled: true
+    permission: redstonehelper2.bin2dec
+  dec2bin:
+    enabled: true
+    permission: redstonehelper2.dec2bin
+
+blocks:
+  flipping:
+    COMPARATOR:
+      enabled: true
+    REPEATER:
+      enabled: true
+    REDSTONE_WALL_TORCH:
+      enabled: true
+    OBSERVER:
+      enabled: true
+    PISTON:
+      enabled: true
+    STICKY_PISTON:
+      enabled: true
+
+messages:
+  composter: "&cComposter level:&a "
+  end_portal_frame: "&cEye:&a "
+  dec2bin: "&cBinary:&a "
+  bin2dec: "&cDecimal:&a "
+  bin2dec_error: "&cPlease check your input"
+  reload: "&cConfiguration reloaded"
