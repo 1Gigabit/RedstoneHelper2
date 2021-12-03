@@ -44,6 +44,7 @@ public class PlayerInteract implements Listener {
                 event.getPlayer().spigot().sendMessage(ChatMessageType.ACTION_BAR,TextComponent.fromLegacyText(endPortalFrameMessage + endPortalFrame.hasEye()));
                 break;
             case "REDSTONE_WIRE":
+                if(!plugin.getConfig().getBoolean("utility.erdstone_action_bar")) return;
                 event.setCancelled(true);
                 int redstoneLevel = ((RedstoneWire) event.getClickedBlock().getBlockData()).getPower();
                 event.getPlayer().spigot().sendMessage(ChatMessageType.ACTION_BAR,TextComponent.fromLegacyText(redstoneMessage + redstoneLevel));
