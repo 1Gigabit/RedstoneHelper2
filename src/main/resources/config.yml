@@ -10,9 +10,26 @@ commands:
   dec2bin:
     enabled: true
     permission: redstonehelper2.dec2bin
-
+  barrel:
+    enabled: true
+    permission: redstonehelper2.barrel
+  furnace:
+    enabled: true
+    permission: redstonehelper2.furnace
+  chest:
+    enabled: true
+    permission: redstonehelper2.chest
+  dropper:
+    enabled: true
+    permission: redstonehelper2.dropper
+  dispenser:
+    enabled: true
+    permission: redstonehelper2.dispenser
+  shulkerbox:
+    enabled: true
+    permission: redstonehelper2.shulkerbox
 blocks:
-  flipping:
+  flipping: #Flipping the directional face of blocks
     COMPARATOR:
       enabled: true
     REPEATER:
@@ -25,7 +42,29 @@ blocks:
       enabled: true
     STICKY_PISTON:
       enabled: true
-
+  naming: #filling named container blocks with amount of items for desired signal strength
+    BARREL:
+      enabled: true
+    FURNACE:
+      enabled: true
+    CHEST:
+      enabled: true
+    DISPENSER:
+      enabled: true
+    DROPPER:
+      enabled: true
+    SHULKER_BOX:
+      enabled: true
+utility:
+  # Delete items dropped from containers when broken
+  delete_items:
+    enabled: true
+    barrel: true
+    furnace: true
+    chest: true
+    dispenser: true
+    dropper: true
+    shulker_box: true
 messages:
   composter: "&cComposter level:&a "
   end_portal_frame: "&cEye:&a "
@@ -33,3 +72,4 @@ messages:
   bin2dec: "&cDecimal:&a "
   bin2dec_error: "&cPlease check your input"
   reload: "&cConfiguration reloaded"
+  not_within_range: "&cMust be within 0-15"
