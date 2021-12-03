@@ -69,7 +69,7 @@ public class Commands {
                 .withArguments(new IntegerArgument("0-15"))
                 .executes((player, args) -> {
                     if ((int) args[0] > 15 || (int) args[0] < 0) {
-                        player.sendMessage(plugin.getConfig().getString("messages.not_within_range", ""));
+                        player.sendMessage(ChatColor.translateAlternateColorCodes('&',plugin.getConfig().getString("messages.not_within_range", "")));
                         return;
                     }
                     Objects.requireNonNull(player.getServer().getPlayer(player.getName())).getInventory().addItem(createItemStack(Material.BARREL, String.valueOf(args[0])));
@@ -84,7 +84,7 @@ public class Commands {
                 .withArguments(new IntegerArgument("0-15"))
                 .executes((player, args) -> {
                     if ((int) args[0] > 15 || (int) args[0] < 0) {
-                        player.sendMessage(plugin.getConfig().getString("messages.not_within_range", ""));
+                        player.sendMessage(ChatColor.translateAlternateColorCodes('&',plugin.getConfig().getString("messages.not_within_range", "")));
                         return;
                     }
                     Objects.requireNonNull(player.getServer().getPlayer(player.getName())).getInventory().addItem(createItemStack(Material.FURNACE, String.valueOf(args[0])));
@@ -99,7 +99,7 @@ public class Commands {
                 .withArguments(new IntegerArgument("0-15"))
                 .executes((player, args) -> {
                     if ((int) args[0] > 15 || (int) args[0] < 0) {
-                        player.sendMessage(plugin.getConfig().getString("messages.not_within_range", ""));
+                        player.sendMessage(ChatColor.translateAlternateColorCodes('&',plugin.getConfig().getString("messages.not_within_range", "")));
                         return;
                     }
                     Objects.requireNonNull(player.getServer().getPlayer(player.getName())).getInventory().addItem(createItemStack(Material.CHEST, String.valueOf(args[0])));
@@ -114,7 +114,7 @@ public class Commands {
                 .withArguments(new IntegerArgument("0-15"))
                 .executes((player, args) -> {
                     if ((int) args[0] > 15 || (int) args[0] < 0) {
-                        player.sendMessage(plugin.getConfig().getString("messages.not_within_range", ""));
+                        player.sendMessage(ChatColor.translateAlternateColorCodes('&',plugin.getConfig().getString("messages.not_within_range", "")));
                         return;
                     }
                     Objects.requireNonNull(player.getServer().getPlayer(player.getName())).getInventory().addItem(createItemStack(Material.DROPPER, String.valueOf(args[0])));
@@ -129,7 +129,7 @@ public class Commands {
                 .withArguments(new IntegerArgument("0-15"))
                 .executes((player, args) -> {
                     if ((int) args[0] > 15 || (int) args[0] < 0) {
-                        player.sendMessage(plugin.getConfig().getString("messages.not_within_range", ""));
+                        player.sendMessage(ChatColor.translateAlternateColorCodes('&',plugin.getConfig().getString("messages.not_within_range", "")));
                         return;
                     }
                     Objects.requireNonNull(player.getServer().getPlayer(player.getName())).getInventory().addItem(createItemStack(Material.DISPENSER, String.valueOf(args[0])));
@@ -144,7 +144,7 @@ public class Commands {
                 .withArguments(new IntegerArgument("0-15"))
                 .executes((player, args) -> {
                     if ((int) args[0] > 15 || (int) args[0] < 0) {
-                        player.sendMessage(plugin.getConfig().getString("messages.not_within_range", ""));
+                        player.sendMessage(ChatColor.translateAlternateColorCodes('&',plugin.getConfig().getString("messages.not_within_range", "")));
                         return;
                     }
                     Objects.requireNonNull(player.getServer().getPlayer(player.getName())).getInventory().addItem(createItemStack(Material.SHULKER_BOX, String.valueOf(args[0])));
