@@ -7,11 +7,13 @@ import net.md_5.bungee.api.chat.TextComponent;
 import org.bukkit.ChatColor;
 import org.bukkit.block.data.Levelled;
 import org.bukkit.block.data.type.EndPortalFrame;
+import org.bukkit.block.data.type.RedstoneWire;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.EquipmentSlot;
+import org.bukkit.material.Redstone;
 
 import java.util.Objects;
 
@@ -27,6 +29,7 @@ public class PlayerInteract implements Listener {
         if(!event.getPlayer().isSneaking()) return;
         final String composterMessage = ChatColor.translateAlternateColorCodes('&',plugin.getConfig().getString("messages.composter",""));
         final String endPortalFrameMessage = ChatColor.translateAlternateColorCodes('&',plugin.getConfig().getString("messages.end_portal_frame",""));
+        final String redstoneMessage = ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("messages.redstone_level",""));
         switch(Objects.requireNonNull(event.getClickedBlock()).getBlockData().getMaterial().toString()) {
             case "COMPOSTER":
                 event.setCancelled(true);
@@ -40,6 +43,10 @@ public class PlayerInteract implements Listener {
                 final EndPortalFrame endPortalFrame = (EndPortalFrame) event.getClickedBlock().getBlockData();
                 event.getPlayer().spigot().sendMessage(ChatMessageType.ACTION_BAR,TextComponent.fromLegacyText(endPortalFrameMessage + endPortalFrame.hasEye()));
                 break;
+            case "REDSTONE_WIRE":
+                event.setCancelled(true);
+                int redstoneLevel = ((RedstoneWire) event.getClickedBlock().getBlockData()).getPower();
+                event.getPlayer().spigot().sendMessage(ChatMessageType.ACTION_BAR,TextComponent.fromLegacyText(redstoneMessage + redstoneLevel));
         }
     }
 }

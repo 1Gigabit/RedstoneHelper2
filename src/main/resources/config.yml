@@ -56,6 +56,8 @@ blocks:
     SHULKER_BOX:
       enabled: true
 utility:
+  #shift+right clicking redstone to display redstone power level on action bar
+  redstone_action_bar: true
   # Delete items dropped from containers when broken
   delete_items:
     enabled: true
@@ -70,6 +72,7 @@ messages:
   end_portal_frame: "&cEye:&a "
   dec2bin: "&cBinary:&a "
   bin2dec: "&cDecimal:&a "
+  redstone_level: "&cPower:&a  "
   bin2dec_error: "&cPlease check your input"
   reload: "&cConfiguration reloaded"
   not_within_range: "&cMust be within 0-15"
