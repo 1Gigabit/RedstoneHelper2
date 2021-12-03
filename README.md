@@ -56,3 +56,5 @@ Supported blocks:
 ### Utility
 * Delete items when containers are broken
 * Set proper amount of items inside containers for desired signal strength based off name of the container
+* Shift+right clicking redstone shows power level on action bar
+* 
