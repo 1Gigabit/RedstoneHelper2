@@ -11,7 +11,7 @@ Utilities for the Minecraft redstone engineer.
 
 # Requirements
 
-* [CommandAPI](https://www.spigotmc.org/resources/api-commandapi-1-16-5-1-18.62353/) plugin
+* Spigot 1.17.1 (Tested)
 
 ## Features
 
