@@ -1,5 +1,7 @@
 package hashmonopolist.redstonehelper2;
 
+import dev.jorel.commandapi.CommandAPI;
+import dev.jorel.commandapi.CommandAPIConfig;
 import hashmonopolist.redstonehelper2.commands.Commands;
 import hashmonopolist.redstonehelper2.listeners.BlockBreak;
 import hashmonopolist.redstonehelper2.listeners.BlockPlaced;
@@ -15,6 +17,7 @@ public final class Redstonehelper2 extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new BlockPlaced(this), this);
         getServer().getPluginManager().registerEvents(new PlayerInteract(this), this);
         getServer().getPluginManager().registerEvents(new BlockBreak(this),this);
+        CommandAPI.onEnable(this);
         Commands.registerDec2Bin(this);
         Commands.registerBin2Dec(this);
         Commands.registerRedstonehelper(this);
@@ -24,6 +27,12 @@ public final class Redstonehelper2 extends JavaPlugin {
         Commands.registerDropper(this);
         Commands.registerDispenser(this);
         Commands.registerShulkerbox(this);
+    }
+
+    @Override
+    public void onLoad() {
+        CommandAPI.onLoad(new CommandAPIConfig());
+
     }
 
     @Override

@@ -1,12 +1,9 @@
 package hashmonopolist.redstonehelper2.listeners;
 
-import com.destroystokyo.paper.event.block.BlockDestroyEvent;
 import hashmonopolist.redstonehelper2.Redstonehelper2;
-import org.bukkit.Material;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
-import org.bukkit.inventory.ItemStack;
 
 public class BlockBreak implements Listener {
     private final Redstonehelper2 plugin;
