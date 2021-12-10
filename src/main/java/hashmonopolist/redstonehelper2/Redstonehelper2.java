@@ -27,6 +27,7 @@ public final class Redstonehelper2 extends JavaPlugin {
         Commands.registerDropper(this);
         Commands.registerDispenser(this);
         Commands.registerShulkerbox(this);
+        Commands.registerHex2Dec(this);
     }
 
     @Override

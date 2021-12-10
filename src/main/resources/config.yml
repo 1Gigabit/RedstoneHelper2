@@ -10,6 +10,9 @@ commands:
   dec2bin:
     enabled: true
     permission: redstonehelper2.dec2bin
+  hex2dec:
+    enabled: true
+    permission: redstonehelper2.hex2dec
   barrel:
     enabled: true
     permission: redstonehelper2.barrel
@@ -72,7 +75,9 @@ messages:
   end_portal_frame: "&cEye:&a "
   dec2bin: "&cBinary:&a "
   bin2dec: "&cDecimal:&a "
+  hex2dec: "&cDecimal:&a "
   redstone_level: "&cPower:&a  "
   bin2dec_error: "&cPlease check your input"
+  hex2dec_error: "&cPlease check your input"
   reload: "&cConfiguration reloaded"
   not_within_range: "&cMust be within 0-15"

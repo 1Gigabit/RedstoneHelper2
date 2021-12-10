@@ -42,7 +42,6 @@ public class Commands {
                 .withPermission(plugin.getConfig().getString("commands.dec2bin.permission"))
                 .register();
     }
-
     public static void registerBin2Dec(Redstonehelper2 plugin) {
         if (!plugin.getConfig().getBoolean("commands.bin2dec.enabled")) return;
         new CommandAPICommand("bin2dec")
@@ -62,6 +61,26 @@ public class Commands {
                 .withPermission(CommandPermission.fromString(plugin.getConfig().getString("commands.bin2dec.permission")))
                 .register();
     }
+    public static void registerHex2Dec(Redstonehelper2 plugin) {
+        if(!plugin.getConfig().getBoolean("commands.hex2dec.enabled")) return;
+        new CommandAPICommand("hex2dec")
+                .withArguments(new StringArgument("hexadecimal"))
+                .executes((player,args) -> {
+                    String message = plugin.getConfig().getString("messages.hex2dec","");
+                    String message_error = plugin.getConfig().getString("messages.hex2dec_error","");
+                    int decimal;
+                    try{
+                        decimal = Integer.parseInt((String) args[0],16);
+                    } catch (NumberFormatException e) {
+                        player.sendMessage(ChatColor.translateAlternateColorCodes('&',message_error));
+                        return;
+                    }
+                    player.sendMessage(ChatColor.translateAlternateColorCodes('&',message)+decimal);
+
+                })
+                .withPermission(CommandPermission.fromString(plugin.getConfig().getString("commands.hex2dec.permission")))
+                .register();
+    }
 
     public static void registerBarrel(Redstonehelper2 plugin) {
         if (!plugin.getConfig().getBoolean("commands.barrel.enabled")) return;
@@ -77,7 +96,6 @@ public class Commands {
                 .withPermission(plugin.getConfig().getString("commands.barrel.permission"))
                 .register();
     }
-
     public static void registerFurnace(Redstonehelper2 plugin) {
         if (!plugin.getConfig().getBoolean("commands.furnace.enabled")) return;
         new CommandAPICommand("furnace")
@@ -92,7 +110,6 @@ public class Commands {
                 .withPermission(plugin.getConfig().getString("commands.furnace.permission"))
                 .register();
     }
-
     public static void registerChest(Redstonehelper2 plugin) {
         if (!plugin.getConfig().getBoolean("commands.chest.enabled")) return;
         new CommandAPICommand("chest")
@@ -107,7 +124,6 @@ public class Commands {
                 .withPermission(plugin.getConfig().getString("commands.chest.permission"))
                 .register();
     }
-
     public static void registerDropper(Redstonehelper2 plugin) {
         if (!plugin.getConfig().getBoolean("commands.dropper.enabled")) return;
         new CommandAPICommand("dropper")
@@ -122,7 +138,6 @@ public class Commands {
                 .withPermission(plugin.getConfig().getString("commands.dropper.permission"))
                 .register();
     }
-
     public static void registerDispenser(Redstonehelper2 plugin) {
         if (!plugin.getConfig().getBoolean("commands.dispenser.enabled")) return;
         new CommandAPICommand("dispenser")
@@ -137,7 +152,6 @@ public class Commands {
                 .withPermission(plugin.getConfig().getString("commands.dispenser.permission"))
                 .register();
     }
-
     public static void registerShulkerbox(Redstonehelper2 plugin) {
         if (!plugin.getConfig().getBoolean("commands.shulkerbox.enabled")) return;
         new CommandAPICommand("shulkerbox")
