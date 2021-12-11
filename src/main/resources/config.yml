@@ -61,6 +61,7 @@ blocks:
 utility:
   #shift+right clicking redstone to display redstone power level on action bar
   redstone_action_bar: true
+  comparator_action_bar: true
   # Delete items dropped from containers when broken
   delete_items:
     enabled: true
@@ -77,6 +78,7 @@ messages:
   bin2dec: "&cDecimal:&a "
   hex2dec: "&cDecimal:&a "
   redstone_level: "&cPower:&a  "
+  comparator_actionbar: "&cLeft:&a %left% &cRight:&a %right% &cOutput: &a%output%"
   bin2dec_error: "&cPlease check your input"
   hex2dec_error: "&cPlease check your input"
   reload: "&cConfiguration reloaded"
