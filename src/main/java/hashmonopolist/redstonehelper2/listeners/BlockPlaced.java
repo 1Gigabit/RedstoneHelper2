@@ -25,8 +25,8 @@ public class BlockPlaced implements Listener {
 
     @EventHandler
     public void onBlockPlace(BlockPlaceEvent event) {
+        Block block = event.getBlockPlaced();
         if (event.getPlayer().isSneaking()) {
-            Block block = event.getBlockPlaced();
 
             switch (block.getBlockData().getMaterial().toString()) {
                 case "REPEATER" -> {
@@ -60,7 +60,6 @@ public class BlockPlaced implements Listener {
                 }
             }
         }
-        Block block = event.getBlockPlaced();
         switch (block.getBlockData().getMaterial().toString()) {
             case "BARREL" -> {
                 if (!config.getBoolean("blocks.naming.BARREL.enabled")) return;
