@@ -5,6 +5,7 @@ import hashmonopolist.redstonehelper2.util.Flippers;
 import org.bukkit.Material;
 import org.bukkit.Nameable;
 import org.bukkit.block.*;
+import org.bukkit.block.data.type.EndPortalFrame;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -28,66 +29,74 @@ public class BlockPlaced implements Listener {
             Block block = event.getBlockPlaced();
 
             switch (block.getBlockData().getMaterial().toString()) {
-                case "REPEATER":
+                case "REPEATER" -> {
                     if (!config.getBoolean("blocks.flipping.REPEATER.enabled")) return;
                     Flippers.flipRepeater(block);
-                    break;
-                case "COMPARATOR":
+                }
+                case "COMPARATOR" -> {
                     if (!config.getBoolean("blocks.flipping.COMPARATOR.enabled")) return;
                     Flippers.flipComparator(block);
-                    break;
-                case "OBSERVER":
+                }
+                case "OBSERVER" -> {
                     if (!config.getBoolean("blocks.flipping.OBSERVER.enabled")) return;
                     Flippers.flipObserver(block);
-                    break;
-                case "REDSTONE_WALL_TORCH":
+                }
+                case "REDSTONE_WALL_TORCH" -> {
                     if (!config.getBoolean("blocks.flipping.REDSTONE_WALL_TORCH.enabled")) return;
                     Flippers.flipRedstoneWallTorch(block);
-                    break;
-                case "PISTON":
+                }
+                case "PISTON" -> {
                     if (!config.getBoolean("blocks.flipping.PISTON.enabled")) return;
-                case "STICKY_PISTON":
+                    Flippers.flipPiston(block);
+                }
+                case "STICKY_PISTON" -> {
                     if (!config.getBoolean("blocks.flipping.STICKY_PISTON.enabled")) return;
                     Flippers.flipPiston(block);
-                    break;
+                }
+                case "END_PORTAL_FRAME" -> {
+                    EndPortalFrame endPortalFrame = (EndPortalFrame) Objects.requireNonNull(event.getBlockPlaced()).getBlockData();
+                    endPortalFrame.setEye(!endPortalFrame.hasEye());
+                    event.getBlockPlaced().setBlockData(endPortalFrame);
+                }
             }
         }
         Block block = event.getBlockPlaced();
         switch (block.getBlockData().getMaterial().toString()) {
-            case "BARREL":
+            case "BARREL" -> {
                 if (!config.getBoolean("blocks.naming.BARREL.enabled")) return;
                 if (((Nameable) event.getBlockPlaced().getState()).getCustomName() == null) return;
                 ((Barrel) block.getState())
                         .getInventory()
                         .addItem(new ItemStack(Material.REDSTONE, calculateItemCount(getDesiredSignalStrength((Nameable) block.getState()), 27)));
-                break;
-            case "CHEST":
+            }
+            case "CHEST" -> {
                 if (!config.getBoolean("blocks.naming.CHEST.enabled")) return;
                 if (((Nameable) event.getBlockPlaced().getState()).getCustomName() == null) return;
                 ((Chest) block.getState())
                         .getInventory()
                         .addItem(new ItemStack(Material.REDSTONE, calculateItemCount(getDesiredSignalStrength((Nameable) block.getState()), 27)));
-                break;
-            case "DISPENSER":
+            }
+            case "DISPENSER" -> {
                 if (!config.getBoolean("blocks.naming.DISPENSER.enabled")) return;
                 if (((Nameable) event.getBlockPlaced().getState()).getCustomName() == null) return;
                 ((Dispenser) block.getState())
                         .getInventory()
                         .addItem(new ItemStack(Material.REDSTONE, calculateItemCount(getDesiredSignalStrength((Nameable) block.getState()), 9)));
-                break;
-            case "DROPPER":
+            }
+            case "DROPPER" -> {
                 if (!config.getBoolean("blocks.naming.DROPPER.enabled")) return;
                 if (((Nameable) event.getBlockPlaced().getState()).getCustomName() == null) return;
                 ((Dropper) block.getState())
                         .getInventory()
                         .addItem(new ItemStack(Material.REDSTONE, calculateItemCount(getDesiredSignalStrength((Nameable) block.getState()), 9)));
-                break;
-            case "FURNACE":
+            }
+            case "FURNACE" -> {
                 if (!config.getBoolean("blocks.naming.FURNACE.enabled")) return;
                 if (((Nameable) event.getBlockPlaced().getState()).getCustomName() == null) return;
                 ((Furnace) block.getState())
                         .getInventory()
                         .addItem(new ItemStack(Material.REDSTONE, calculateItemCount(getDesiredSignalStrength((Nameable) block.getState()), 3)));
+            }
         }
     }
 
