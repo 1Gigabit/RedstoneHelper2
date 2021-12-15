@@ -6,7 +6,7 @@
 
     <groupId>hashmonopolist</groupId>
     <artifactId>redstonehelper2</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <packaging>jar</packaging>
 
     <name>Redstonehelper2</name>
