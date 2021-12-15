@@ -201,7 +201,8 @@ public class Commands {
                     ItemMeta itemMeta = itemStack.getItemMeta();
                     itemMeta.setDisplayName(String.valueOf(args[0]));
                     itemStack.setItemMeta(itemMeta);
-                    NBTItem nbtItem = new NBTItem(itemStack);                    addItems(nbtItem, calculateItemCount((Integer) args[0], 27));
+                    NBTItem nbtItem = new NBTItem(itemStack);
+                    addItems(nbtItem, calculateItemCount((Integer) args[0], 27));
                     player.getServer().getPlayer(player.getName()).getInventory().addItem(nbtItem.getItem());
                 })
                 .withPermission(plugin.getConfig().getString("commands.shulkerbox.permission"))
