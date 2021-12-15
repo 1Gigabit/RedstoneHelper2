@@ -13,25 +13,31 @@ public class BlockBreak implements Listener {
     @EventHandler
     public void onBlockBreak(BlockBreakEvent event) {
         if(!plugin.getConfig().getBoolean("utility.delete_items.enabled")) return;
-        switch(event.getBlock().getType()) {
-            case FURNACE:
-                if(!plugin.getConfig().getBoolean("utility.delete_items.furnace")) return;
+        switch (event.getBlock().getType()) {
+            case FURNACE -> {
+                if (!plugin.getConfig().getBoolean("utility.delete_items.furnace")) return;
                 event.setDropItems(false);
-            case CHEST:
-                if(!plugin.getConfig().getBoolean("utility.delete_items.chest")) return;
+            }
+            case CHEST -> {
+                if (!plugin.getConfig().getBoolean("utility.delete_items.chest")) return;
                 event.setDropItems(false);
-            case DROPPER:
-                if(!plugin.getConfig().getBoolean("utility.delete_items.dropper")) return;
+            }
+            case DROPPER -> {
+                if (!plugin.getConfig().getBoolean("utility.delete_items.dropper")) return;
                 event.setDropItems(false);
-            case DISPENSER:
-                if(!plugin.getConfig().getBoolean("utility.delete_items.dispenser")) return;
+            }
+            case DISPENSER -> {
+                if (!plugin.getConfig().getBoolean("utility.delete_items.dispenser")) return;
                 event.setDropItems(false);
-            case SHULKER_BOX:
-                if(!plugin.getConfig().getBoolean("utility.delete_items.shulker_box")) return;
+            }
+            case SHULKER_BOX -> {
+                if (!plugin.getConfig().getBoolean("utility.delete_items.shulker_box")) return;
                 event.setDropItems(false);
-            case BARREL:
-                if(!plugin.getConfig().getBoolean("utility.delete_items.barrel")) return;
+            }
+            case BARREL -> {
+                if (!plugin.getConfig().getBoolean("utility.delete_items.barrel")) return;
                 event.setDropItems(false);
+            }
         }
     }
 }
