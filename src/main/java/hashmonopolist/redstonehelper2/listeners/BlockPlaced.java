@@ -2,15 +2,12 @@ package hashmonopolist.redstonehelper2.listeners;
 
 import hashmonopolist.redstonehelper2.Redstonehelper2;
 import hashmonopolist.redstonehelper2.util.Flippers;
-import org.bukkit.Material;
-import org.bukkit.Nameable;
-import org.bukkit.block.*;
+import org.bukkit.block.Block;
 import org.bukkit.block.data.type.EndPortalFrame;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockPlaceEvent;
-import org.bukkit.inventory.ItemStack;
 
 import java.util.Objects;
 
