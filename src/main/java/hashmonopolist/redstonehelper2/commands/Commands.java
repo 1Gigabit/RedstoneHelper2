@@ -11,6 +11,7 @@ import hashmonopolist.redstonehelper2.Redstonehelper2;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 public class Commands {
     public static void registerRedstonehelper(Redstonehelper2 plugin) {
@@ -94,7 +95,11 @@ public class Commands {
                         player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("messages.not_within_range", "")));
                         return;
                     }
-                    NBTItem nbtItem = new NBTItem(new ItemStack(Material.BARREL));
+                    ItemStack itemStack = new ItemStack(Material.BARREL);
+                    ItemMeta itemMeta = itemStack.getItemMeta();
+                    itemMeta.setDisplayName(String.valueOf(args[0]));
+                    itemStack.setItemMeta(itemMeta);
+                    NBTItem nbtItem = new NBTItem(itemStack);
                     addItems(nbtItem, calculateItemCount((Integer) args[0], 27));
                     player.getServer().getPlayer(player.getName()).getInventory().addItem(nbtItem.getItem());
                 })
@@ -111,8 +116,11 @@ public class Commands {
                         player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("messages.not_within_range", "")));
                         return;
                     }
-                    NBTItem nbtItem = new NBTItem(new ItemStack(Material.FURNACE));
-                    addItems(nbtItem, calculateItemCount((Integer) args[0], 3));
+                    ItemStack itemStack = new ItemStack(Material.FURNACE);
+                    ItemMeta itemMeta = itemStack.getItemMeta();
+                    itemMeta.setDisplayName(String.valueOf(args[0]));
+                    itemStack.setItemMeta(itemMeta);
+                    NBTItem nbtItem = new NBTItem(itemStack);                    addItems(nbtItem, calculateItemCount((Integer) args[0], 3));
                     player.getServer().getPlayer(player.getName()).getInventory().addItem(nbtItem.getItem());
                 })
                 .withPermission(plugin.getConfig().getString("commands.furnace.permission"))
@@ -128,8 +136,11 @@ public class Commands {
                         player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("messages.not_within_range", "")));
                         return;
                     }
-                    NBTItem nbtItem = new NBTItem(new ItemStack(Material.CHEST));
-                    addItems(nbtItem, calculateItemCount((Integer) args[0], 27));
+                    ItemStack itemStack = new ItemStack(Material.CHEST);
+                    ItemMeta itemMeta = itemStack.getItemMeta();
+                    itemMeta.setDisplayName(String.valueOf(args[0]));
+                    itemStack.setItemMeta(itemMeta);
+                    NBTItem nbtItem = new NBTItem(itemStack);                    addItems(nbtItem, calculateItemCount((Integer) args[0], 27));
                     player.getServer().getPlayer(player.getName()).getInventory().addItem(nbtItem.getItem());
                 })
                 .withPermission(plugin.getConfig().getString("commands.chest.permission"))
@@ -145,7 +156,11 @@ public class Commands {
                         player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("messages.not_within_range", "")));
                         return;
                     }
-                    NBTItem nbtItem = new NBTItem(new ItemStack(Material.BARREL));
+                    ItemStack itemStack = new ItemStack(Material.DROPPER);
+                    ItemMeta itemMeta = itemStack.getItemMeta();
+                    itemMeta.setDisplayName(String.valueOf(args[0]));
+                    itemStack.setItemMeta(itemMeta);
+                    NBTItem nbtItem = new NBTItem(itemStack);
                     addItems(nbtItem, calculateItemCount((Integer) args[0], 9));
                     player.getServer().getPlayer(player.getName()).getInventory().addItem(nbtItem.getItem());
                 })
@@ -162,8 +177,11 @@ public class Commands {
                         player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("messages.not_within_range", "")));
                         return;
                     }
-                    NBTItem nbtItem = new NBTItem(new ItemStack(Material.DISPENSER));
-                    addItems(nbtItem, calculateItemCount((Integer) args[0], 9));
+                    ItemStack itemStack = new ItemStack(Material.DISPENSER);
+                    ItemMeta itemMeta = itemStack.getItemMeta();
+                    itemMeta.setDisplayName(String.valueOf(args[0]));
+                    itemStack.setItemMeta(itemMeta);
+                    NBTItem nbtItem = new NBTItem(itemStack);                    addItems(nbtItem, calculateItemCount((Integer) args[0], 9));
                     player.getServer().getPlayer(player.getName()).getInventory().addItem(nbtItem.getItem());
                 })
                 .withPermission(plugin.getConfig().getString("commands.dispenser.permission"))
@@ -179,8 +197,11 @@ public class Commands {
                         player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("messages.not_within_range", "")));
                         return;
                     }
-                    NBTItem nbtItem = new NBTItem(new ItemStack(Material.SHULKER_BOX));
-                    addItems(nbtItem, calculateItemCount((Integer) args[0], 27));
+                    ItemStack itemStack = new ItemStack(Material.SHULKER_BOX);
+                    ItemMeta itemMeta = itemStack.getItemMeta();
+                    itemMeta.setDisplayName(String.valueOf(args[0]));
+                    itemStack.setItemMeta(itemMeta);
+                    NBTItem nbtItem = new NBTItem(itemStack);                    addItems(nbtItem, calculateItemCount((Integer) args[0], 27));
                     player.getServer().getPlayer(player.getName()).getInventory().addItem(nbtItem.getItem());
                 })
                 .withPermission(plugin.getConfig().getString("commands.shulkerbox.permission"))
