@@ -1,5 +1,8 @@
 package hashmonopolist.redstonehelper2.commands;
 
+import de.tr7zw.changeme.nbtapi.NBTCompound;
+import de.tr7zw.changeme.nbtapi.NBTCompoundList;
+import de.tr7zw.changeme.nbtapi.NBTItem;
 import dev.jorel.commandapi.CommandAPICommand;
 import dev.jorel.commandapi.CommandPermission;
 import dev.jorel.commandapi.arguments.IntegerArgument;
@@ -8,9 +11,6 @@ import hashmonopolist.redstonehelper2.Redstonehelper2;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
-
-import java.util.Objects;
 
 public class Commands {
     public static void registerRedstonehelper(Redstonehelper2 plugin) {
@@ -43,6 +43,7 @@ public class Commands {
                 .withPermission(plugin.getConfig().getString("commands.dec2bin.permission"))
                 .register();
     }
+
     public static void registerBin2Dec(Redstonehelper2 plugin) {
         if (!plugin.getConfig().getBoolean("commands.bin2dec.enabled")) return;
         new CommandAPICommand("bin2dec")
@@ -62,21 +63,22 @@ public class Commands {
                 .withPermission(CommandPermission.fromString(plugin.getConfig().getString("commands.bin2dec.permission")))
                 .register();
     }
+
     public static void registerHex2Dec(Redstonehelper2 plugin) {
-        if(!plugin.getConfig().getBoolean("commands.hex2dec.enabled")) return;
+        if (!plugin.getConfig().getBoolean("commands.hex2dec.enabled")) return;
         new CommandAPICommand("hex2dec")
                 .withArguments(new StringArgument("hexadecimal"))
-                .executes((player,args) -> {
-                    String message = plugin.getConfig().getString("messages.hex2dec","");
-                    String message_error = plugin.getConfig().getString("messages.hex2dec_error","");
+                .executes((player, args) -> {
+                    String message = plugin.getConfig().getString("messages.hex2dec", "");
+                    String message_error = plugin.getConfig().getString("messages.hex2dec_error", "");
                     int decimal;
-                    try{
-                        decimal = Integer.parseInt((String) args[0],16);
+                    try {
+                        decimal = Integer.parseInt((String) args[0], 16);
                     } catch (NumberFormatException e) {
-                        player.sendMessage(ChatColor.translateAlternateColorCodes('&',message_error));
+                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', message_error));
                         return;
                     }
-                    player.sendMessage(ChatColor.translateAlternateColorCodes('&',message)+decimal);
+                    player.sendMessage(ChatColor.translateAlternateColorCodes('&', message) + decimal);
 
                 })
                 .withPermission(CommandPermission.fromString(plugin.getConfig().getString("commands.hex2dec.permission")))
@@ -89,89 +91,121 @@ public class Commands {
                 .withArguments(new IntegerArgument("0-15"))
                 .executes((player, args) -> {
                     if ((int) args[0] > 15 || (int) args[0] < 0) {
-                        player.sendMessage(ChatColor.translateAlternateColorCodes('&',plugin.getConfig().getString("messages.not_within_range", "")));
+                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("messages.not_within_range", "")));
                         return;
                     }
-                    Objects.requireNonNull(player.getServer().getPlayer(player.getName())).getInventory().addItem(createItemStack(Material.BARREL, String.valueOf(args[0])));
+                    NBTItem nbtItem = new NBTItem(new ItemStack(Material.BARREL));
+                    addItems(nbtItem, calculateItemCount((Integer) args[0], 27));
+                    player.getServer().getPlayer(player.getName()).getInventory().addItem(nbtItem.getItem());
                 })
                 .withPermission(plugin.getConfig().getString("commands.barrel.permission"))
                 .register();
     }
+
     public static void registerFurnace(Redstonehelper2 plugin) {
         if (!plugin.getConfig().getBoolean("commands.furnace.enabled")) return;
         new CommandAPICommand("furnace")
                 .withArguments(new IntegerArgument("0-15"))
                 .executes((player, args) -> {
                     if ((int) args[0] > 15 || (int) args[0] < 0) {
-                        player.sendMessage(ChatColor.translateAlternateColorCodes('&',plugin.getConfig().getString("messages.not_within_range", "")));
+                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("messages.not_within_range", "")));
                         return;
                     }
-                    Objects.requireNonNull(player.getServer().getPlayer(player.getName())).getInventory().addItem(createItemStack(Material.FURNACE, String.valueOf(args[0])));
+                    NBTItem nbtItem = new NBTItem(new ItemStack(Material.FURNACE));
+                    addItems(nbtItem, calculateItemCount((Integer) args[0], 3));
+                    player.getServer().getPlayer(player.getName()).getInventory().addItem(nbtItem.getItem());
                 })
                 .withPermission(plugin.getConfig().getString("commands.furnace.permission"))
                 .register();
     }
+
     public static void registerChest(Redstonehelper2 plugin) {
         if (!plugin.getConfig().getBoolean("commands.chest.enabled")) return;
         new CommandAPICommand("chest")
                 .withArguments(new IntegerArgument("0-15"))
                 .executes((player, args) -> {
                     if ((int) args[0] > 15 || (int) args[0] < 0) {
-                        player.sendMessage(ChatColor.translateAlternateColorCodes('&',plugin.getConfig().getString("messages.not_within_range", "")));
+                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("messages.not_within_range", "")));
                         return;
                     }
-                    Objects.requireNonNull(player.getServer().getPlayer(player.getName())).getInventory().addItem(createItemStack(Material.CHEST, String.valueOf(args[0])));
+                    NBTItem nbtItem = new NBTItem(new ItemStack(Material.CHEST));
+                    addItems(nbtItem, calculateItemCount((Integer) args[0], 27));
+                    player.getServer().getPlayer(player.getName()).getInventory().addItem(nbtItem.getItem());
                 })
                 .withPermission(plugin.getConfig().getString("commands.chest.permission"))
                 .register();
     }
+
     public static void registerDropper(Redstonehelper2 plugin) {
         if (!plugin.getConfig().getBoolean("commands.dropper.enabled")) return;
         new CommandAPICommand("dropper")
                 .withArguments(new IntegerArgument("0-15"))
                 .executes((player, args) -> {
                     if ((int) args[0] > 15 || (int) args[0] < 0) {
-                        player.sendMessage(ChatColor.translateAlternateColorCodes('&',plugin.getConfig().getString("messages.not_within_range", "")));
+                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("messages.not_within_range", "")));
                         return;
                     }
-                    Objects.requireNonNull(player.getServer().getPlayer(player.getName())).getInventory().addItem(createItemStack(Material.DROPPER, String.valueOf(args[0])));
+                    NBTItem nbtItem = new NBTItem(new ItemStack(Material.BARREL));
+                    addItems(nbtItem, calculateItemCount((Integer) args[0], 9));
+                    player.getServer().getPlayer(player.getName()).getInventory().addItem(nbtItem.getItem());
                 })
                 .withPermission(plugin.getConfig().getString("commands.dropper.permission"))
                 .register();
     }
+
     public static void registerDispenser(Redstonehelper2 plugin) {
         if (!plugin.getConfig().getBoolean("commands.dispenser.enabled")) return;
         new CommandAPICommand("dispenser")
                 .withArguments(new IntegerArgument("0-15"))
                 .executes((player, args) -> {
                     if ((int) args[0] > 15 || (int) args[0] < 0) {
-                        player.sendMessage(ChatColor.translateAlternateColorCodes('&',plugin.getConfig().getString("messages.not_within_range", "")));
+                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("messages.not_within_range", "")));
                         return;
                     }
-                    Objects.requireNonNull(player.getServer().getPlayer(player.getName())).getInventory().addItem(createItemStack(Material.DISPENSER, String.valueOf(args[0])));
+                    NBTItem nbtItem = new NBTItem(new ItemStack(Material.DISPENSER));
+                    addItems(nbtItem, calculateItemCount((Integer) args[0], 9));
+                    player.getServer().getPlayer(player.getName()).getInventory().addItem(nbtItem.getItem());
                 })
                 .withPermission(plugin.getConfig().getString("commands.dispenser.permission"))
                 .register();
     }
+
     public static void registerShulkerbox(Redstonehelper2 plugin) {
         if (!plugin.getConfig().getBoolean("commands.shulkerbox.enabled")) return;
         new CommandAPICommand("shulkerbox")
                 .withArguments(new IntegerArgument("0-15"))
                 .executes((player, args) -> {
                     if ((int) args[0] > 15 || (int) args[0] < 0) {
-                        player.sendMessage(ChatColor.translateAlternateColorCodes('&',plugin.getConfig().getString("messages.not_within_range", "")));
+                        player.sendMessage(ChatColor.translateAlternateColorCodes('&', plugin.getConfig().getString("messages.not_within_range", "")));
                         return;
                     }
-                    Objects.requireNonNull(player.getServer().getPlayer(player.getName())).getInventory().addItem(createItemStack(Material.SHULKER_BOX, String.valueOf(args[0])));
+                    NBTItem nbtItem = new NBTItem(new ItemStack(Material.SHULKER_BOX));
+                    addItems(nbtItem, calculateItemCount((Integer) args[0], 27));
+                    player.getServer().getPlayer(player.getName()).getInventory().addItem(nbtItem.getItem());
                 })
                 .withPermission(plugin.getConfig().getString("commands.shulkerbox.permission"))
                 .register();
     }
-    private static ItemStack createItemStack(Material material, String name) {
-        ItemStack itemStack = new ItemStack(material);
-        ItemMeta itemMeta = itemStack.getItemMeta();
-        Objects.requireNonNull(itemMeta).setDisplayName(name);
-        itemStack.setItemMeta(itemMeta);
-        return itemStack;
+
+    public static int calculateItemCount(int desiredSignalStrength, int slotCount) {
+        return Math.max(desiredSignalStrength, Math.round((slotCount * 64 / 14) * desiredSignalStrength - 1));
+    }
+
+    private static void addItems(NBTItem nbtItem, int count) {
+        NBTCompound nbtCompound = nbtItem.getOrCreateCompound("BlockEntityTag");
+        NBTCompoundList nbtCompoundList = nbtCompound.getCompoundList("Items");
+        int remainder = count % 64;
+        for (int i = 0; i < count / 64; i++) {
+            NBTCompound slot = nbtCompoundList.addCompound();
+            slot.setString("id", "minecraft:redstone");
+            slot.setByte("Count", (byte) 64);
+            slot.setByte("Slot", (byte) i);
+        }
+        if (remainder != 0) {
+            NBTCompound slot = nbtCompoundList.addCompound();
+            slot.setString("id", "minecraft:redstone");
+            slot.setByte("Count", (byte) remainder);
+            slot.setByte("Slot", (byte) (nbtCompoundList.size() - 1));
+        }
     }
 }

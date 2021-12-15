@@ -60,50 +60,5 @@ public class BlockPlaced implements Listener {
                 }
             }
         }
-        switch (block.getBlockData().getMaterial().toString()) {
-            case "BARREL" -> {
-                if (!config.getBoolean("blocks.naming.BARREL.enabled")) return;
-                if (((Nameable) event.getBlockPlaced().getState()).getCustomName() == null) return;
-                ((Barrel) block.getState())
-                        .getInventory()
-                        .addItem(new ItemStack(Material.REDSTONE, calculateItemCount(getDesiredSignalStrength((Nameable) block.getState()), 27)));
-            }
-            case "CHEST" -> {
-                if (!config.getBoolean("blocks.naming.CHEST.enabled")) return;
-                if (((Nameable) event.getBlockPlaced().getState()).getCustomName() == null) return;
-                ((Chest) block.getState())
-                        .getInventory()
-                        .addItem(new ItemStack(Material.REDSTONE, calculateItemCount(getDesiredSignalStrength((Nameable) block.getState()), 27)));
-            }
-            case "DISPENSER" -> {
-                if (!config.getBoolean("blocks.naming.DISPENSER.enabled")) return;
-                if (((Nameable) event.getBlockPlaced().getState()).getCustomName() == null) return;
-                ((Dispenser) block.getState())
-                        .getInventory()
-                        .addItem(new ItemStack(Material.REDSTONE, calculateItemCount(getDesiredSignalStrength((Nameable) block.getState()), 9)));
-            }
-            case "DROPPER" -> {
-                if (!config.getBoolean("blocks.naming.DROPPER.enabled")) return;
-                if (((Nameable) event.getBlockPlaced().getState()).getCustomName() == null) return;
-                ((Dropper) block.getState())
-                        .getInventory()
-                        .addItem(new ItemStack(Material.REDSTONE, calculateItemCount(getDesiredSignalStrength((Nameable) block.getState()), 9)));
-            }
-            case "FURNACE" -> {
-                if (!config.getBoolean("blocks.naming.FURNACE.enabled")) return;
-                if (((Nameable) event.getBlockPlaced().getState()).getCustomName() == null) return;
-                ((Furnace) block.getState())
-                        .getInventory()
-                        .addItem(new ItemStack(Material.REDSTONE, calculateItemCount(getDesiredSignalStrength((Nameable) block.getState()), 3)));
-            }
-        }
-    }
-
-    private int getDesiredSignalStrength(Nameable nameable) {
-        return Integer.parseInt(Objects.requireNonNull(nameable.getCustomName()));
-    }
-
-    private int calculateItemCount(int desiredSignalStrength, int slotCount) {
-        return Math.max(desiredSignalStrength, Math.round((slotCount * 64 / 14) * desiredSignalStrength - 1));
     }
 }
