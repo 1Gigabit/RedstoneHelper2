@@ -5,6 +5,7 @@ import de.tr7zw.changeme.nbtapi.NBTCompoundList;
 import de.tr7zw.changeme.nbtapi.NBTItem;
 import dev.jorel.commandapi.CommandAPICommand;
 import dev.jorel.commandapi.CommandPermission;
+import dev.jorel.commandapi.arguments.Argument;
 import dev.jorel.commandapi.arguments.IntegerArgument;
 import dev.jorel.commandapi.arguments.StringArgument;
 import hashmonopolist.redstonehelper2.Redstonehelper2;
@@ -12,6 +13,9 @@ import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Commands {
     public static void registerRedstonehelper(Redstonehelper2 plugin) {
@@ -120,7 +124,8 @@ public class Commands {
                     ItemMeta itemMeta = itemStack.getItemMeta();
                     itemMeta.setDisplayName(String.valueOf(args[0]));
                     itemStack.setItemMeta(itemMeta);
-                    NBTItem nbtItem = new NBTItem(itemStack);                    addItems(nbtItem, calculateItemCount((Integer) args[0], 3));
+                    NBTItem nbtItem = new NBTItem(itemStack);
+                    addItems(nbtItem, calculateItemCount((Integer) args[0], 3));
                     player.getServer().getPlayer(player.getName()).getInventory().addItem(nbtItem.getItem());
                 })
                 .withPermission(plugin.getConfig().getString("commands.furnace.permission"))
@@ -140,7 +145,8 @@ public class Commands {
                     ItemMeta itemMeta = itemStack.getItemMeta();
                     itemMeta.setDisplayName(String.valueOf(args[0]));
                     itemStack.setItemMeta(itemMeta);
-                    NBTItem nbtItem = new NBTItem(itemStack);                    addItems(nbtItem, calculateItemCount((Integer) args[0], 27));
+                    NBTItem nbtItem = new NBTItem(itemStack);
+                    addItems(nbtItem, calculateItemCount((Integer) args[0], 27));
                     player.getServer().getPlayer(player.getName()).getInventory().addItem(nbtItem.getItem());
                 })
                 .withPermission(plugin.getConfig().getString("commands.chest.permission"))
@@ -181,7 +187,8 @@ public class Commands {
                     ItemMeta itemMeta = itemStack.getItemMeta();
                     itemMeta.setDisplayName(String.valueOf(args[0]));
                     itemStack.setItemMeta(itemMeta);
-                    NBTItem nbtItem = new NBTItem(itemStack);                    addItems(nbtItem, calculateItemCount((Integer) args[0], 9));
+                    NBTItem nbtItem = new NBTItem(itemStack);
+                    addItems(nbtItem, calculateItemCount((Integer) args[0], 9));
                     player.getServer().getPlayer(player.getName()).getInventory().addItem(nbtItem.getItem());
                 })
                 .withPermission(plugin.getConfig().getString("commands.dispenser.permission"))
