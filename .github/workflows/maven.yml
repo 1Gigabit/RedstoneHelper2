@@ -26,4 +26,5 @@ jobs:
       run: mvn -B package --file pom.xml
     - name: Release Drafter
       uses: release-drafter/release-drafter@v5.15.0
-
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
