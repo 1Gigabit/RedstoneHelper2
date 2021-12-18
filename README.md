@@ -1,6 +1,10 @@
 
 # RedstoneHelper2
 ![RedstoneHelper2 Build](https://github.com/1Gigabit/RedstoneHelper2/actions/workflows/maven.yml/badge.svg)
+<p align="center">
+<img src="https://i.imgur.com/FOyEMq9.png" width=200 height=200>
+</p>
+
 
 Utilities for the Minecraft redstone engineer.
 
