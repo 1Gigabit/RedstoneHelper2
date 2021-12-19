@@ -1,6 +1,11 @@
 
+
 # RedstoneHelper2
 ![RedstoneHelper2 Build](https://github.com/1Gigabit/RedstoneHelper2/actions/workflows/maven.yml/badge.svg)
+<p align="center">
+<img src="https://i.imgur.com/FOyEMq9.png" width=200 height=200>
+</p>
+
 
 Utilities for the Minecraft redstone engineer.
 
@@ -26,11 +31,10 @@ Utilities for the Minecraft redstone engineer.
 | /dec2bin [Number] | Converts decimal (base 10) to binary (base 2)| redstonehelper2.dec2bin|    
 | /bin2dec [Binary] | Converts binary (base 2) to decimal (base 10) | redstonehelper2.bin2dec|
 | /hex2dec [Hexadecimal ] | Converts hexadecimal (base 16) to decimal (base 10) | redstonehelper2.hex2dec
-| /furnace [0-15] | Gives you a furnace named a number 0-15 | redstonehelper2.furnace| | /barrel [0-15] | Gives you a  
-barrel named a number 0-15 | redstonehelper2.barrel | /chest [0-15] | Gives you a chest named a number 0-15 |  
-redstonehelper2.chest | /dropper [0-15] | Gives you a dropper named a number 0-15 | redstonehelper2.dropper |  
-/dispenser [0-15] | Gives you a dispenser named a number 0-15 | redstonehelper2.dispenser | /shulkerbox [0-15] | Gives  
-you a shulker box named a number 0-15 | redstonehelper2.shulkerbox
+| /furnace [0-15] | Gives you a furnace that is prefilled with just enough items to meet desired redstone strength | redstonehelper2.furnace |
+ /barrel [0-15] |  Gives you a barrel that is prefilled with just enough items to meet desired redstone strength | redstonehelper2.barrel | /chest [0-15] | Gives you a chest named a number 0-15 |  redstonehelper2.chest 
+/dropper [0-15] |  Gives you a dropper that is prefilled with just enough items to meet desired redstone strength | redstonehelper2.dropper | /dispenser [0-15] | Gives you a dispenser named a number 0-15 | redstonehelper2.dispenser
+/shulkerbox [0-15] |  Gives you a shulkerbox that is prefilled with just enough items to meet desired redstone strength | redstonehelper2.shulkerbox
 
 ### Blocks
 
